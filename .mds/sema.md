@@ -16,10 +16,8 @@
 
 ## Fluxo Principal
 ### Pré-condições
-1. Uma (ou mais) estação remota está em operação.
-1. Ao menos uma estação remota está conectada à internet.
 1. O dispositivo do SEMA está conectado à internet.
-1. Possuir broker MQTT ou o dispositivo do SEMA estiver conectado à mesma rede wifi que pelo menos uma estação.
+1. Possuir broker MQTT.
 
 ### Fluxo
 1. Uma `Estação` envia dados para o SEMA.
@@ -33,10 +31,10 @@
 1. O dispositivo possúi dados armazenados.
 
 ### Fluxo
-1. O Operador solicita a recuperação dos dados.
-1. O sistema recupera os dados recebidos.
-1. O Operador visualiza os dados.
-1. O operador exporta os dados.
+1. O sistema recupera os dados.
+1. O operador visualiza os dados.
+1. O operador solicita a exportação dos dados.
+1. O sistema exporta os dados.
 
 #
 

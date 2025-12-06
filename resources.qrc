@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/connection.png</file>
+        <file>img/database.png</file>
+        <file>img/settings.png</file>
+        <file>img/save.png</file>
+        <file>img/sema.png</file>
+        <file>img/sema.ico</file>
+        <file>img/clear.png</file>
+        <file>img/erase.png</file>
+    </qresource>
+</RCC>

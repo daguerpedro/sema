@@ -13,6 +13,18 @@
 
 #
 
+<p align=center><strong>PPRÉVIA</strong></p>
+
+**Dashboard ([Vídeo no Youtube](https://youtu.be/PN8Nt1Sg9ok))**   
+[![dashboard](./img/sema_dash.png)](https://youtu.be/PN8Nt1Sg9ok)
+
+**Configurações**   
+![dashboard](./img/sema_settings.png)
+
+**Exportar dados**   
+![dashboard](./img/sema_export.png)
+#
+
 <p align=center><strong>SUMÁRIO</strong></p>
 
 [**1. ANÁLISE ORIENTADA A OBJETO**](.mds/sema.md)<br>
