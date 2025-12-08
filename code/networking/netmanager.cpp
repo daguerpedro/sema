@@ -10,22 +10,72 @@ NetManager::NetManager(QObject *parent)
             this, &NetManager::proccessMessage);
 
     connect(cli, &QMqttClient::stateChanged, this, [this](QMqttClient::ClientState s){
-        emit log("MQTT State changed: " + QString::number(s));
+        QString info ;
+        switch(s) {
+        case QMqttClient::Disconnected:
+            info = "Desconectado";
+            break;
+        case QMqttClient::Connecting:
+            info = "Conectando";
+            break;
+        case QMqttClient::Connected:
+            info = "Conectado";
+            break;
+        default: break;
+        };
+
+        emit log("MQTT " + info);
     });
 
     connect(cli, &QMqttClient::errorChanged, this, [this](QMqttClient::ClientError e){
-        emit log("MQTT Error changed: " + QString::number(e));
-        emit errorChanged();
+        QString info;
+        switch (e)
+        {
+            case QMqttClient::NoError:
+                break;
+            case QMqttClient::InvalidProtocolVersion:
+                info = "Versão do protocolo inválida";
+                break;
+            case QMqttClient::IdRejected:
+                info = "ID Rejeitado";
+                break;
+            case QMqttClient::ServerUnavailable:
+                info = "Servidor indisponível";
+                break;
+            case QMqttClient::BadUsernameOrPassword:
+                info = "Login inválido";
+                break;
+            case QMqttClient::NotAuthorized:
+                info = "Nâo autorizado";
+                break;
+            case QMqttClient::TransportInvalid:
+                info = "Transporte inválido";
+                break;
+            case QMqttClient::ProtocolViolation:
+                info = "Violação de protocolo";
+                break;
+            case QMqttClient::UnknownError:
+                info = "Erro desconhecido";
+                break;
+            case QMqttClient::Mqtt5SpecificError:
+                info = "Erro específico do Mqtt V5";
+                break;
+            default:
+                break;
+        };
+
+        emit log("MQTT " + info);
+
+        if(e !=  QMqttClient::NoError)
+            emit errorChanged();
     });
 
     connect(cli, &QMqttClient::connected, this, [this](){
-        emit log("MQTT conectado.");
         cli->subscribe(QMqttTopicFilter(m_settingsData.topico));
         emit connected();
     });
 
     connect(cli, &QMqttClient::disconnected, this, [this](){
-        emit log("MQTT disconectado.");
         emit disconnected();
     });
 }
